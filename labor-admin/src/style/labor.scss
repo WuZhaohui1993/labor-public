@@ -1,0 +1,165 @@
+:root {
+  --labor-ink: #152b31;
+  --labor-muted: #687b80;
+  --labor-line: #dce5e6;
+  --labor-surface: #f5f8f8;
+  --labor-accent: #146c73;
+  --labor-accent-soft: #e1eff0;
+}
+
+body {
+  color: var(--labor-ink);
+  background: var(--labor-surface);
+}
+
+.labor-page {
+  min-height: calc(100vh - 132px);
+  padding: 26px 30px 40px;
+  animation: labor-page-in 260ms ease-out both;
+}
+
+.labor-page__header {
+  display: flex;
+  gap: 24px;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--labor-line);
+}
+
+.labor-page h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.labor-page__desc {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: var(--labor-muted);
+}
+
+.labor-toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 18px 0;
+}
+
+.workspace-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 34px;
+  padding: 7px 10px;
+  background: #f4f8f8;
+  border-left: 2px solid var(--labor-accent);
+}
+
+.workspace-field strong {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--labor-ink);
+}
+
+.workspace-field small {
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--labor-muted);
+}
+
+.labor-table-wrap {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--labor-line);
+  border-radius: 10px;
+}
+
+.labor-table-wrap .el-table__row {
+  transition:
+    background-color 150ms ease,
+    transform 150ms ease;
+}
+
+.labor-table-wrap .el-table__row:hover > td.el-table__cell {
+  background: #f0f7f7 !important;
+}
+
+.labor-status {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 12px;
+  color: var(--labor-muted);
+}
+
+.labor-status::before {
+  width: 7px;
+  height: 7px;
+  content: "";
+  background: currentcolor;
+  border-radius: 50%;
+}
+
+.labor-status.is-success,
+.labor-status.status-matched,
+.labor-status.status-success {
+  color: #26724f;
+}
+
+.labor-status.is-danger,
+.labor-status.status-conflict,
+.labor-status.status-failed {
+  color: #b44747;
+}
+
+.labor-status.status-pending,
+.labor-status.status-unmatched {
+  color: #a66f19;
+}
+
+.labor-status.status-running {
+  color: var(--labor-accent);
+}
+
+.labor-status.is-muted,
+.labor-status.status-released,
+.labor-status.status-paused,
+.labor-status.status-ignored {
+  color: #879397;
+}
+
+.labor-pagination {
+  justify-content: flex-end;
+  padding-top: 18px;
+}
+
+@keyframes labor-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (width <= 760px) {
+  .labor-page {
+    padding: 20px 16px 32px;
+  }
+
+  .labor-page__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .labor-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

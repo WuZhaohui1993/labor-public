@@ -1,0 +1,116 @@
+server:
+  port: ${SERVER_PORT:9989}
+  forward-headers-strategy: framework
+  servlet:
+    session:
+      cookie:
+        secure: ${COOKIE_SECURE:false}
+        same-site: lax
+
+spring:
+  application:
+    name: labor-server
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER:labor}
+    password: ${DB_PASSWORD}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+        format_sql: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  jackson:
+    time-zone: UTC
+    default-property-inclusion: non_null
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=500,expireAfterWrite=10m
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when_authorized
+
+app:
+  security:
+    jwt-secret: ${JWT_SECRET}
+    access-token-minutes: ${ACCESS_TOKEN_MINUTES}
+    refresh-token-days: ${REFRESH_TOKEN_DAYS}
+    refresh-cookie-secure: ${COOKIE_SECURE:false}
+    bootstrap-admin-password: ${BOOTSTRAP_ADMIN_PASSWORD}
+  crypto:
+    encryption-key: ${APP_DATA_ENCRYPTION_KEY}
+    legacy-encryption-key: ${APP_LEGACY_DATA_ENCRYPTION_KEY}
+    hash-key: ${APP_ID_HASH_KEY}
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:8848,http://127.0.0.1:8848}
+  import:
+    max-rows: ${IMPORT_MAX_ROWS:20000}
+    template-path: ${IMPORT_TEMPLATE_PATH:docs/劳务实名制线下数据采集模板_V1.0.xlsx}
+  integration:
+    mock-enabled: ${INTEGRATION_MOCK_ENABLED:true}
+    hikvision:
+      event-path: ${HIKVISION_EVENT_PATH:/artemis/api/acs/v2/door/events}
+      organization-path: ${HIKVISION_ORGANIZATION_PATH:/artemis/api/resource/v1/org/orgList}
+      organization-page-size: ${HIKVISION_ORGANIZATION_PAGE_SIZE:500}
+      organization-max-pages: ${HIKVISION_ORGANIZATION_MAX_PAGES:100}
+      page-size: ${HIKVISION_EVENT_PAGE_SIZE:100}
+      max-pages: ${HIKVISION_EVENT_MAX_PAGES:1000}
+      overlap-seconds: ${HIKVISION_EVENT_OVERLAP_SECONDS:120}
+      connect-timeout-seconds: ${HIKVISION_CONNECT_TIMEOUT_SECONDS:5}
+      read-timeout-seconds: ${HIKVISION_READ_TIMEOUT_SECONDS:15}
+      time-pattern: "${HIKVISION_TIME_PATTERN:yyyy-MM-dd'T'HH:mm:ssXXX}"
+    labor-platform:
+      token-path: ${LABOR_TOKEN_PATH}
+      project-path: ${LABOR_PROJECT_PATH:/collBasicInfo/pushProjectBasicDataV2}
+      company-path: ${LABOR_COMPANY_PATH:/collBasicInfo/pushCollBasicDataV2}
+      team-path: ${LABOR_TEAM_PATH:/collBasicInfo/pushTeamDataV2}
+      person-path: ${LABOR_PERSON_PATH:/personnelInfo/pushPersonnelDataV2}
+      attendance-path: ${LABOR_ATTENDANCE_PATH:/punchRecords/dataV2}
+      minimal-payload: ${LABOR_MINIMAL_PAYLOAD:true}
+      authorization-prefix: ${LABOR_AUTHORIZATION_PREFIX:}
+      token-ttl-seconds: ${LABOR_TOKEN_TTL_SECONDS}
+      check-time-pattern: "${LABOR_CHECK_TIME_PATTERN:yyyy-MM-dd HH:mm:ss}"
+      connect-timeout-seconds: ${LABOR_CONNECT_TIMEOUT_SECONDS:5}
+      read-timeout-seconds: ${LABOR_READ_TIMEOUT_SECONDS:15}
+    worker:
+      batch-size: ${SYNC_WORKER_BATCH_SIZE:50}
+      max-tasks-per-run: ${SYNC_WORKER_MAX_TASKS_PER_RUN:1000}
+      max-retries: ${SYNC_WORKER_MAX_RETRIES:5}
+      retry-base-seconds: ${SYNC_RETRY_BASE_SECONDS:30}
+
+  scheduling:
+    # 未启动自动推送的项目仍按小时独立采集；已启动项目由每小时40分推送编排统一采集。
+    hik-collection-delay-ms: ${HIK_COLLECTION_DELAY_MS:3600000}
+    outbox-delay-ms: ${OUTBOX_DELAY_MS:5000}
+    # 每小时40分采集、匹配并推送；11:40、23:40先完成对应半日自动补全。
+    push-check-cron: ${PUSH_WORKER_CHECK_CRON:0 40 * * * *}
+    # 每天北京时间02:30分批清理日志并压缩旧考勤原始报文。
+    data-retention-cron: ${DATA_RETENTION_CRON:0 30 18 * * *}
+  retention:
+    successful-call-log-days: ${SUCCESSFUL_CALL_LOG_RETENTION_DAYS:30}
+    failed-call-log-days: ${FAILED_CALL_LOG_RETENTION_DAYS:365}
+    attendance-raw-payload-days: ${ATTENDANCE_RAW_PAYLOAD_RETENTION_DAYS:180}
+    batch-size: ${DATA_RETENTION_BATCH_SIZE:2000}
+    max-batches-per-run: ${DATA_RETENTION_MAX_BATCHES_PER_RUN:20}
+
+logging:
+  level:
+    com.labor.sync: INFO
+    org.hibernate.SQL: WARN

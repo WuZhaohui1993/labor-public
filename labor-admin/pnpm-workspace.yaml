@@ -1,0 +1,22 @@
+packages:
+  - "."
+
+onlyBuiltDependencies:
+  - "@parcel/watcher"
+  - "core-js"
+  - "es5-ext"
+  - "esbuild"
+  - "typeit"
+  - "vue-demi"
+
+ignoredBuiltDependencies:
+  - "@tailwindcss/oxide"
+  - "vue3-danmaku"
+
+allowBuilds:
+  "@parcel/watcher": true
+  core-js: true
+  es5-ext: true
+  esbuild: true
+  typeit: true
+  vue-demi: true
