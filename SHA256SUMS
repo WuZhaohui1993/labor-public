@@ -1156,6 +1156,8 @@ d3ae29e61411ad8f7964b9c0fc78a86588c05092fd4529e44374d86b21fcae81  .git/refs/head
 0737e3dcad6d23af3f0571b1312ebc7a2c2a5e4b32bcd4cf05bedebb831f2455  PUBLICATION_STATUS.md
 fa916eb9238e67c34307d8ceb74a37dff445ed1f62deb811e37adcbf6e998dc8  README.md
 c6e2ab73bfb56db59d801d476d6fff00516a298c0773ef8c61b146dc60024e98  THIRD_PARTY_NOTICES.md
+a57a8a891c80e96bf96cdbc202bed711f26b324ed6f873d2358903634909bc2c  docs/assets/labor-workbench.png
+24de151e928764d3fc2692cb0eb4f7d1c4df2e844aa23b6fd8b425012741a542  docs/assets/preview.webp
 c15ee596a226f57ac3b2cb5fb66aecb16c1e02e40b2e35928c4be2df8644ed9d  labor-admin/.browserslistrc
 a41420d0e5fb50c566fdc5e2170c0ce6b89fae241b5a3fb7b331de3eecbfcccd  labor-admin/.dockerignore
 bcc4d86851d32d511efe3f558d3dc2e01f710444f1c2311e48121a618ebb431e  labor-admin/.editorconfig
@@ -1671,8 +1673,8 @@ f7cb887fbba4634939f517481d39ed3900fe19afc3582a40f0291384da5d7ffd  labor-admin/sr
 c21b7a89ea0924163fad0ca2ffaf9e050716da1d960bfdbb78a773af821d5dfc  labor-admin/src/views/permission/button/index.vue
 045eb5b8e00b6697f76e63b8309a8d839554acd249d2e38b103d3b687b56797c  labor-admin/src/views/permission/button/perms.vue
 a7c3eb2d06f35e019e8f3b495fc4fb9b2849de0a2ab28ea49e721882b5542d96  labor-admin/src/views/permission/page/index.vue
-11c8f03b0c5ccd025ae7bf7061eef741ae7188bba774564ed3d482471807807a  labor-admin/src/views/push/index.vue
 d137b8cd42c962b7f7468b63c1bbb14a6b07a66bc19cbdf981fe22d51400bfc8  labor-admin/src/views/push-logs/index.vue
+11c8f03b0c5ccd025ae7bf7061eef741ae7188bba774564ed3d482471807807a  labor-admin/src/views/push/index.vue
 da434917be4f738025adc89a488386f231843222dd3401682b688a3f19d1a1ba  labor-admin/src/views/result/columns.tsx
 0560ad3ab52b07e657b5d95caf9f5c717b99787ca2f5e749d0e9b8f5c97560c4  labor-admin/src/views/result/fail.vue
 62b03f393f9127306a33f6558d8a41b71583d3914b70843ca2b56e67ec1538a1  labor-admin/src/views/result/success.vue
@@ -1741,6 +1743,7 @@ bd6b6a996678a1f688716dc606afae34c3205caf468c617e4159d80717da0e5d  labor-admin/sr
 8003e18e1f16a848d3b0e0f90b0625bbebbf243606fc2705ed0e281d1d91cb6f  labor-admin/src/views/table/base/stripe.vue
 3666c9b6fcef1522ca3c0e3da688d004c95c42756ad370e6cada656bf3eeef62  labor-admin/src/views/table/base/totalRow.vue
 266283a650cff11b58e388b11b6562145559447bb7be7868ac8b0510c6cc6475  labor-admin/src/views/table/base/tree.vue
+1b9ab72e46d16d7eac902d3414be04e2f3e4e0eab330723399265f1f10cf92e5  labor-admin/src/views/table/edit.vue
 e309ee38cef69b5dc3861593216cb18dc98619ab02ba23d2cf516d6494e094f2  labor-admin/src/views/table/edit/data.ts
 9c0d87c0dd9808f97491bb2ac13e7733c5fd801e2a570fb1bbb32aa53883b004  labor-admin/src/views/table/edit/demo1/columns.tsx
 111be4ba60cec9c0abee87a092b05ab3d01e7265d13d9c87971bb9f8bbe2f066  labor-admin/src/views/table/edit/demo1/index.vue
@@ -1750,7 +1753,7 @@ e16b40fd2545fba13fd14a07dc8f443a3b6504ecd795f0855d7fdd299c94a222  labor-admin/sr
 c269601f8ce70915efb415a64cf7ebd2ff688d4a977334e58a8e382249489fd8  labor-admin/src/views/table/edit/demo3/index.vue
 823f07f418c63486d9183bcf7c9459f5b06bf5177770429eb9c36df60ab2256c  labor-admin/src/views/table/edit/empty.svg
 0c927d3e0f56d4cb047c9b5443153cc433f97f88016df74b5d56c6b9288f2bf1  labor-admin/src/views/table/edit/list.tsx
-1b9ab72e46d16d7eac902d3414be04e2f3e4e0eab330723399265f1f10cf92e5  labor-admin/src/views/table/edit.vue
+fd833ba5bc0d4c5474b23891cd4c6b3e8387ffc541218f541714ce062e5f0692  labor-admin/src/views/table/high.vue
 1520804ae2fd77f68e3e3233457a37cf7828d75ffae20f8e1ba514d1dbb4210a  labor-admin/src/views/table/high/adaptive/columns.tsx
 d8e2afed983cefe3d5a6d07f70370d377f9ddb244d311905552877740432ecdc  labor-admin/src/views/table/high/adaptive/index.vue
 8829bd233b1e30ee067e34c273b97cf65109d6dd69ee5764f71530d9358c9c61  labor-admin/src/views/table/high/contextmenu/columns.tsx
@@ -1778,14 +1781,13 @@ e315136ec956250248eb227e19486de0b7cfb239530ecab187e62a01e68c5d46  labor-admin/sr
 2b37af0df7276046c9186abf75918b2a3b685fb49b2382296c26f6ba8eac76f4  labor-admin/src/views/table/high/table-select/radio/index.vue
 9294c1be9a39f7cc988df1d93ab0555d41e769040f456d9339f8208e25e56cee  labor-admin/src/views/table/high/watermark/columns.tsx
 8636c6a2d08bf52e1d53dc6292670ca5dc0a4b9d189efb310c095e6a30481927  labor-admin/src/views/table/high/watermark/index.vue
-fd833ba5bc0d4c5474b23891cd4c6b3e8387ffc541218f541714ce062e5f0692  labor-admin/src/views/table/high.vue
 76cf702536c701c8ef3a199b2a81cf1425eff4681303570e0319d6f0e3fc2fc0  labor-admin/src/views/table/index.vue
+41ff5f41863c419ededecb897822ec0e06b18ce8d622dbdb695c996cb8a6b527  labor-admin/src/views/table/virtual.vue
 062d2964b4e33a9515f65ba33892674e4f530c909b9ece7167573f626ecb60ee  labor-admin/src/views/table/virtual/list.tsx
 86f561d3e78cb361044c101b172787746d95cd45d740629275b3492972837c92  labor-admin/src/views/table/virtual/list.vue
 591f916f8d1f44db8b16f76ed769ad68b42a0725f6d26d75d65f94341999031e  labor-admin/src/views/table/virtual/pageList.vue
 602ca29bf6fa6e90c97aa75fe70b8a5af7a42f7492344bceb22cb3054c4f1c9d  labor-admin/src/views/table/virtual/tree.json
 e6944bba10a435057bee48e96abf65b19d602808ec32124aad3f5e6b31665b11  labor-admin/src/views/table/virtual/treeList.vue
-41ff5f41863c419ededecb897822ec0e06b18ce8d622dbdb695c996cb8a6b527  labor-admin/src/views/table/virtual.vue
 fb8aa55e752ae21eede18649324224adc1972e1a2a43873368a3af3341ecb50c  labor-admin/src/views/tabs/hooks.ts
 da4e69ea8b8fadca6633872b82a4b486e7b5953fac7a84413815ab20b8802d33  labor-admin/src/views/tabs/index.vue
 00e1ee2edb5d1918b96a469b7fb673c04b2167b7cacee02b1b9e5c032c4118ad  labor-admin/src/views/tabs/params-detail.vue
@@ -2002,4 +2004,3 @@ e2a83b50e15ed32fefa5f20e9e6d0068e9b5fd19a906f9835af699883acf7964  labor-server/s
 cb485ae8d20f831da440d85cd1c38577735331a54c4621f99163d6d0dac09cc0  labor-server/src/test/java/com/labor/sync/security/AuthControllerTest.java
 236674400be348dc69040694c219ce345d86ec07b38552b8e15057e05fbf18ad  labor-server/src/test/java/com/labor/sync/security/SystemMenuControllerTest.java
 b524b9541559b935d9fd4c11c005bc5f45efe775c94b36314cedf3e5ad6cf79e  labor-server/src/test/java/com/labor/sync/security/WorkspaceIsolationIntegrationTest.java
-24de151e928764d3fc2692cb0eb4f7d1c4df2e844aa23b6fd8b425012741a542  docs/assets/preview.webp
